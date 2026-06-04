@@ -1,0 +1,6 @@
+# dna-detectllm: HF-pull, no local checkpoint required.
+# Force fp32 because the upstream baseline calls .numpy() on logits, and
+# numpy has no bfloat16 dtype (TypeError: Got unsupported ScalarType BFloat16).
+name: dna-detectllm
+overrides:
+  use_bfloat16: false

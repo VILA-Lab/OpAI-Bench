@@ -1,0 +1,3 @@
+# radar: HF-pull, no local checkpoint required
+name: radar
+overrides: {}

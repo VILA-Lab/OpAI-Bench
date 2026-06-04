@@ -1,0 +1,7 @@
+pandas
+tqdm
+tenacity
+requests
+nltk
+google-genai
+openai

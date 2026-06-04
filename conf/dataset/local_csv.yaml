@@ -1,0 +1,21 @@
+# Local CSV dataset (bypass the HuggingFace OpAI-Bench loader).
+#
+# Concatenates the four domain CSVs into one evaluation set. The
+# directory must contain {essay,abstract,news,report}.csv with columns
+# matching the schema consumed by src/opai_bench/data_loader.py
+# (text_clean / tokens / tok_labels / sentences / sent_labels / split /
+#  ai_model / version / operation / AI_token_ratio / ...).
+#
+# Point LOCAL_CSV_DIR at your prepared-CSV directory before invoking
+# eval.py:
+#
+#   LOCAL_CSV_DIR=/path/to/prepared/csv uv run python eval.py \
+#       dataset=local_csv detector=e5-small
+
+name: local_csv
+split: test
+local_csv:
+  - ${oc.env:LOCAL_CSV_DIR}/essay.csv
+  - ${oc.env:LOCAL_CSV_DIR}/abstract.csv
+  - ${oc.env:LOCAL_CSV_DIR}/news.csv
+  - ${oc.env:LOCAL_CSV_DIR}/report.csv

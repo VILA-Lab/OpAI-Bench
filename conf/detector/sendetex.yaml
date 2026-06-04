@@ -1,0 +1,9 @@
+# SenDetEX — sentence-level (DeBERTa + BiGRU + CRF).
+# Requires a local checkpoint (.pt). Fill in checkpoint_path below or
+# override on the CLI:
+#
+#   uv run python eval.py detector=sendetex \
+#       detector.overrides.checkpoint_path=/path/to/best.pt
+name: sendetex
+overrides:
+  checkpoint_path: ???

@@ -1,0 +1,63 @@
+[project]
+name = "opai-bench-detectors"
+version = "0.1.0"
+description = "Reference detector evaluation harness for OpAI-Bench (NeurIPS submission, anonymous)."
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Anonymous", email = "anonymous@example.com" },
+]
+
+dependencies = [
+    # Hydra entry point
+    "hydra-core",
+    "omegaconf",
+    # OpAI-Bench loader
+    "datasets",
+    "huggingface_hub",
+    # Core ML — pin to torch 2.10.x: 2.11+ ships cu13x wheels that require
+    # an NVIDIA driver newer than 12.4, while 2.9 and below dropped
+    # `torch.compile` support on Python 3.14 (which transformers' ModernBERT
+    # and SeqXGPT both invoke).
+    "torch>=2.10,<2.11",
+    "torchvision>=0.25,<0.26",
+    "transformers==4.50.1",
+    "tokenizers",
+    "sentencepiece",
+    "protobuf",
+    "scipy",
+    "numpy",
+    "scikit-learn>=1.8.0",
+    "pandas",
+    "matplotlib>=3.10.8",
+    # LoRA / supervised stack
+    "peft>=0.14",
+    "accelerate",
+    "deepspeed",
+    "bitsandbytes",
+    "torchmetrics",
+    "tensorboard",
+    "python-dotenv",
+    # SeqXGPT / DAMASHA / Gigacheck baselines
+    "fastNLP",
+    "pytorch-crf",
+    "textstat",
+    "nltk",
+    # Utility libs used by vendored baselines
+    "intervaltree",
+    "loguru",
+    "dacite",
+    "pyyaml",
+    "openai",
+    "msgpack",
+    "setuptools<80",  # fastNLP / pkg_resources compat
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["opai_bench*", "opai_bench_detectors*"]
+exclude = ["baseline*", "evaluate*", "results*", "logs*"]

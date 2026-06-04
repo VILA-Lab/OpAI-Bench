@@ -1,0 +1,17 @@
+# OpAI-Bench (HuggingFace dataset).
+#
+# Set `hf_repo` to the dataset's repo ID on the HuggingFace Hub before
+# running. The repo will be passed verbatim to `datasets.load_dataset`.
+#
+# You can also override it on the CLI:
+#   uv run python eval.py dataset.hf_repo=<org>/<repo>
+
+name: opai_bench
+hf_repo: ???
+
+# Dataset config name. `default` is the main benchmark, `ablations`
+# is the ablation subset.
+config: default
+
+# `train` | `dev` | `test`
+split: test

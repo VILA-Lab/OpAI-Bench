@@ -1,0 +1,39 @@
+# Fast-DetectGPT Detector (95%+ AUROC, 340× faster than DetectGPT)
+# Zero-shot detection using conditional probability curvature
+# GPU REQUIRED - Cannot run on CPU
+# See docs/CONFIGURATION.md for detailed parameter descriptions
+
+model: fast-detectgpt
+
+# Model Configuration (two models: sampling + scoring)
+sampling_model_name: falcon-7b # See docs for available models
+scoring_model_name: falcon-7b-instruct # Can be same or different (if tokenizers compatible)
+
+# Recommended Combinations (pre-calibrated for accuracy):
+# - gpt-neo-2.7B + gpt-neo-2.7B: 82% accuracy, fastest (6-8GB VRAM)
+# - gpt-j-6B + gpt-neo-2.7B: 81% accuracy, good balance (12-16GB VRAM)
+# - falcon-7b + falcon-7b-instruct: 89% accuracy, best (14-18GB VRAM)
+
+# Device Configuration
+device: "0,1,2,3" # Multi-GPU recommended. Options: "0" (single), "0,1,2,3" (multi), "auto"
+
+# Cache Configuration
+cache_dir: "cache" # HuggingFace model cache directory (relative or absolute)
+
+# Detection Configuration
+threshold: 0.5 # Classification threshold (calibrated probability, 0.5 = balanced)
+
+# Performance Notes:
+# - Speed: 1-7s per text (model-dependent)
+# - GPU: Required, multi-GPU recommended for large models
+# - Min text length: 100 tokens (500+ tokens for best reliability)
+
+# Available Models:
+# gpt-neo-2.7B, gpt-j-6B, gpt-neox-20b, falcon-7b, falcon-7b-instruct,
+# opt-2.7b, opt-13b, llama-13b, llama2-13b, bloom-7b1
+# See docs/CONFIGURATION.md for full list and compatibility
+
+# Usage:
+# from opai_bench_detectors import get_pipeline_from_cfg
+# pipe = get_pipeline_from_cfg("configs/fast-detectgpt.yaml")
+# result = pipe("Your text here")

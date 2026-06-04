@@ -1,0 +1,38 @@
+# Desklib Detector (v1.01, ~85% accuracy estimated)
+# Supervised detector with custom transformer + mean pooling
+# Simple baseline, easy to fine-tune on custom data
+# See docs/CONFIGURATION.md for detailed parameter descriptions
+
+model: desklib
+
+# Model Configuration
+model_path: desklib/ai-text-detector-v1.01 # HuggingFace model ID
+
+# Device Configuration
+device: auto # Options: auto (recommended), cuda, cpu
+
+# Detection Configuration
+threshold: 0.5 # Classification threshold (0.0-1.0), higher = more precision
+max_length: 768 # Max sequence length (128-1024), longer = more memory
+
+# Performance Notes:
+# - Inference: ~20ms per text (GPU), ~100ms (CPU)
+# - Memory: ~500MB (GPU), ~300MB (CPU)
+# - Single text processing (batch not optimized)
+# - Min text length: 50 tokens
+
+# Architecture:
+# - Custom PreTrainedModel with mean pooling
+# - Single-neuron classifier head
+# - BCEWithLogitsLoss training
+# - Simple, interpretable design
+
+# Usage:
+# from opai_bench_detectors import pipeline
+# pipe = pipeline("ai-text-detection", model="desklib")
+# result = pipe("Your text here")
+
+# Threshold Tuning Examples:
+# - threshold: 0.3 → High recall (catch more AI, more false positives)
+# - threshold: 0.5 → Balanced (default)
+# - threshold: 0.7 → High precision (fewer false positives, miss some AI)

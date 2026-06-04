@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+.uv/
+
+# Hydra runtime artifacts
+outputs/
+multirun/
+
+# Local runs. Match either a plain directory or a symlink with the
+# same name (gitignore patterns with a trailing slash only match
+# directories, so we list both forms explicitly).
+logs
+logs/
+results
+results/
+
+# Local dataset / cache / checkpoint trees. These may be plain
+# directories OR symlinks pointing at large external storage on the
+# developer's host; either way, they should never be committed.
+cache
+cache/
+data
+data/
+checkpoints
+checkpoints/
+
+# Model weights and other large binaries (in case any leak into the tree)
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.pkl
+*.npz
+*.npy
+*.parquet
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+.claude/
+.codex/
+.serena/
+openspec/
+.env
+.env.local
+
+# Stray dataset checkpoint CSVs from prep scripts
+/*_checkpoint.csv
+
+# Build / packaging metadata
+*.egg-info/
+build/
+dist/
+
+# Carve-out: ship the second-opinion commit-gate hook + its registration
+# while keeping the rest of .claude/ (commands/, skills/, settings.local.json,
+# scheduled_tasks.lock, etc.) gitignored as personal/runtime state.
+!.claude/
+.claude/*
+!.claude/hooks/
+.claude/hooks/*
+!.claude/hooks/second-opinion-commit-gate.sh
+!.claude/hooks/README.md
+!.claude/settings.json

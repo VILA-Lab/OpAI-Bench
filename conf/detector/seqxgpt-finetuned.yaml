@@ -1,0 +1,9 @@
+# SeqXGPT — fine-tuned variant.
+# Requires a local checkpoint (.pt). Fill in checkpoint_path below or
+# override on the CLI:
+#
+#   uv run python eval.py detector=seqxgpt-finetuned \
+#       detector.overrides.checkpoint_path=/path/to/seqxgpt_transformer_final.pt
+name: seqxgpt-finetuned
+overrides:
+  checkpoint_path: ???

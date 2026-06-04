@@ -1,0 +1,29 @@
+# E5-Small LoRA Detector (93.9% accuracy on RAID benchmark)
+# Supervised detector using fine-tuned e5-small with LoRA adaptation
+# See docs/CONFIGURATION.md for detailed parameter descriptions
+
+model: e5-small
+
+# Model Configuration
+model_path: MayZhou/e5-small-lora-ai-generated-detector # HuggingFace path or local checkpoint
+
+# Device Configuration
+device: auto # Options: auto (recommended), cuda, cpu
+
+# Detection Configuration
+threshold: 0.85 # Classification threshold (original training used 0.85 for optimal accuracy)
+
+# Performance Notes:
+# - Inference: ~10ms per text (GPU), ~50ms (CPU)
+# - Memory: ~400MB (GPU), ~200MB (CPU)
+# - Max tokens: 512 (auto-truncated)
+# - Batch processing: Supported via HuggingFace pipeline
+
+# Accuracy (RAID benchmark):
+# - Overall: 93.9% | GPT-4: 99.3% | With attacks: 85.7%
+# See docs/CONFIGURATION.md for complete benchmarks
+
+# Usage:
+# from opai_bench_detectors import pipeline
+# pipe = pipeline("ai-text-detection", model="e5-small")
+# result = pipe("Your text here")

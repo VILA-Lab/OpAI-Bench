@@ -1,0 +1,9 @@
+# GL-CLiC — global-local coherence + lexical complexity.
+# Requires a local checkpoint (.pt or .ckpt). Fill in checkpoint_path
+# below or override on the CLI:
+#
+#   uv run python eval.py detector=gl-clic \
+#       detector.overrides.checkpoint_path=/path/to/best_model.pt
+name: gl-clic
+overrides:
+  checkpoint_path: ???

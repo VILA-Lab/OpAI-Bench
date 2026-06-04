@@ -1,0 +1,3 @@
+# seqxgpt: HF-pull, no local checkpoint required
+name: seqxgpt
+overrides: {}

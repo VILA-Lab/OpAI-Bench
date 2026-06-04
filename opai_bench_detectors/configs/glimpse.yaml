@@ -1,0 +1,27 @@
+# Glimpse Detector (85-89% AUROC on proprietary models)
+# Zero-shot detection for GPT-4, Claude, Gemini via API
+# Runs on CPU, incurs API costs (~$0.001 per text)
+# See docs/CONFIGURATION.md for detailed parameter descriptions
+
+model: glimpse
+
+# Scoring Model Configuration
+scoring_model_name: davinci-002 # Options: davinci-002, babbage-002, gpt-35-turbo-1106
+
+# API Configuration
+api_base: https://api.openai.com/v1 # OpenAI or Azure endpoint
+api_version: 2023-09-15-preview # For Azure only
+
+# API Key: Set OPENAI_API_KEY or AZURE_OPENAI_API_KEY in .env file
+# Do NOT put API keys in this config file
+
+# Distribution Estimation
+estimator: geometric # Options: geometric (recommended), zipfian, mlp
+rank_size: 1000 # Tokens to estimate (100-5000), higher = better accuracy + cost
+top_k: 5 # Top tokens from API (5-10)
+
+# Prompt Configuration
+prompt: prompt3 # Options: prompt0, prompt3 (recommended), prompt4
+
+# Detection Configuration
+threshold: 0.5 # Classification threshold (calibrated probability, 0.5 = balanced)

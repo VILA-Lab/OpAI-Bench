@@ -1,0 +1,36 @@
+# OpAI-Bench detectors — Hydra entry-point config.
+#
+# Usage examples:
+#   uv run python eval.py detector=e5-small
+#   uv run python eval.py detector=fast-detectgpt dataset.split=dev
+#   uv run python eval.py -m detector=e5-small,desklib,binoculars   # multirun
+#
+# All path values below are interpreted relative to the repo root
+# (the directory containing eval.py). Override on the CLI when needed,
+# e.g. `output_dir=/some/other/path` or `hf_cache=...`.
+
+defaults:
+  - dataset: opai_bench
+  - detector: e5-small
+  - _self_
+
+# Where the prepared CSV is cached after the HF dataset is materialized.
+prepared_csv_dir: ./data/opai_bench_prepared
+
+# Where per-run outputs (predictions.jsonl + summary.json + run_config.json)
+# are written. eval.py creates a timestamped subdirectory here.
+output_dir: ./results
+
+# Compute device.
+device: cuda:0
+
+# Cap rows for smoke-testing. null = no cap.
+max_samples: null
+
+# HuggingFace cache (datasets + model weights). Set this to a path on a
+# large filesystem if your home partition is small.
+hf_cache: ./cache/hf_cache
+
+# Bypass HF download and feed a local CSV in the same schema instead.
+# Pass either a single CSV path or a list of paths (concatenated row-wise).
+local_csv: null

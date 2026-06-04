@@ -1,0 +1,3 @@
+# binoculars: HF-pull, no local checkpoint required
+name: binoculars
+overrides: {}

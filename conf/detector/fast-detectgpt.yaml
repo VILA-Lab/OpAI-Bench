@@ -1,0 +1,3 @@
+# fast-detectgpt: HF-pull, no local checkpoint required
+name: fast-detectgpt
+overrides: {}

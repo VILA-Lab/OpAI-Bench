@@ -1,0 +1,3 @@
+# mgtd: HF-pull, no local checkpoint required
+name: mgtd
+overrides: {}
