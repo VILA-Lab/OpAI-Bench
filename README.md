@@ -268,11 +268,11 @@ OpAI-Bench/
 If you find OpAI-Bench useful in your research, please cite:
 
 ```bibtex
-@article{bsharat2026opaibench,
-  title = {Operation-Guided Progressive Human-to-AI Text Transformation Benchmark for Multi-Granularity AI-Text Detection},
-  author = {Bsharat, Sondos Mahmoud and Liu, Jiacheng and Zhao, Xiaohan and Yao, Tianjun and Shang, Xinyi and Tang, Yi and Cui, Jiacheng and Elhagry, Ahmed and Al Khatib, Salwa K. and Li, Hao and Khan, Salman and Shen, Zhiqiang},
-  journal = {arXiv preprint arXiv:XXXX.XXXXX},
-  year = {2026}
+@article{bsharat2026operation,
+  title={Operation-Guided Progressive Human-to-AI Text Transformation Benchmark for Multi-Granularity AI-Text Detection},
+  author={Bsharat, Sondos Mahmoud and Liu, Jiacheng and Zhao, Xiaohan and Yao, Tianjun and Shang, Xinyi and Tang, Yi and Cui, Jiacheng and Elhagry, Ahmed and Khatib, Salwa K Al and Li, Hao and others},
+  journal={arXiv preprint arXiv:2606.06481},
+  year={2026}
 }
 ```
 
